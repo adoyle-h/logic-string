@@ -1,0 +1,44 @@
+{
+  "name": "logic-string",
+  "version": "0.1.0",
+  "description": "Calculate logical expressions in string.",
+  "main": "src/L.js",
+  "scripts": {
+    "lint": "npm-run-all lint-*",
+    "lint-src": "eslint --quiet src",
+    "lint-test": "eslint --quiet test",
+    "test": "ava",
+    "test-cov": "nyc npm run test",
+    "ci": "npm-run-all lint test"
+  },
+  "keywords": [
+    "logicals",
+    "operator",
+    "string",
+    "boolean"
+  ],
+  "engines": {
+    "node": ">=6.9.1"
+  },
+  "author": "ADoyle <adoyle.h@gmail.com>",
+  "license": "Apache-2.0",
+  "homepage": "https://github.com/adoyle-h/logic-string",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/adoyle-h/logic-string.git"
+  },
+  "bugs": {
+    "url": "https://github.com/adoyle-h/logic-string/issues"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "ava": "^0.17.0",
+    "eslint": "^3.12.2",
+    "eslint-config-adoyle-style": "2.2.1",
+    "npm-run-all": "^4.0.0",
+    "nyc": "^10.0.0"
+  },
+  "files": [
+    "src"
+  ]
+}
