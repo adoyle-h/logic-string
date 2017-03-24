@@ -33,9 +33,9 @@ test('!false', (t) => {
     t.is(logic('!false'), true);
 });
 
-test('!a', (t) => {
-    t.is(logic('!a', {a: false}), true);
-    t.is(logic('!a', {a: true}), false);
+test('!{a}', (t) => {
+    t.is(logic('!{a}', {a: false}), true);
+    t.is(logic('!{a}', {a: true}), false);
 });
 
 test('{a} && {b} || {c}', (t) => {
