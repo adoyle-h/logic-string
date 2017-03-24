@@ -1,4 +1,4 @@
-var format = require("string-template")
+const format = require('string-template');
 
 /**
  * It is based on `eval` function. You should be in charge of the security with injection risks.
