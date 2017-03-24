@@ -29,39 +29,43 @@ Calculate logical expressions in string.
 ## Usage
 
 ```
-const L = require('logic-string');
+const logic = require('logic-string');
 
-L.eval('true && false');  // false
-L.eval('true || false');  // true
+logic('true && false');  // false
+logic('true || false');  // true
 
-L.eval('a && b', {        // false
+logic('{a} && {b}', {        // false
     a: true,
     b: false,
 });
-L.eval('a || b', {        // true
+logic('{a} || {b}', {        // true
     a: true,
     b: false,
 });
 
-L.eval('!false');         // true
-L.eval('!true');          // false
+logic('!false');         // true
+logic('!true');          // false
 
-L.eval('(a && b) || c', { // true
+logic('({a} && {b}) || {c}', { // true
     a: true,
     b: true,
     c: false,
 });
 
-L.eval('( a && b )||c', { // true
+logic('( {a} && {b} )||{c}', { // true
     a: true,
     b: true,
     c: false,
+});
+
+logic('{int} > 2', { // true
+    int: 5
 });
 ```
 
 ## API
 
-### L.eval(pattern, variables)
+### logic(pattern, variables)
 
 ```js
 /**

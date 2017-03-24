@@ -1,24 +1,24 @@
 import test from 'ava';
-import L from '../../src/L';
+import logic from '../../src/logic';
 
 test('true && false', (t) => {
-    t.is(L.eval('true && false'), false);
+    t.is(logic('true && false'), false);
 });
 
 test('true || false', (t) => {
-    t.is(L.eval('true || false'), true);
+    t.is(logic('true || false'), true);
 });
 
-test('a && b', (t) => {
-    const result = L.eval('a && b', {
+test('{a} && {b}', (t) => {
+    const result = logic('{a} && {b}', {
         a: true,
         b: false,
     });
     t.is(result, false);
 });
 
-test('a || b', (t) => {
-    const result = L.eval('a || b', {
+test('{a} || {b}', (t) => {
+    const result = logic('{a} || {b}', {
         a: true,
         b: false,
     });
@@ -26,20 +26,20 @@ test('a || b', (t) => {
 });
 
 test('!true', (t) => {
-    t.is(L.eval('!true'), false);
+    t.is(logic('!true'), false);
 });
 
 test('!false', (t) => {
-    t.is(L.eval('!false'), true);
+    t.is(logic('!false'), true);
 });
 
 test('!a', (t) => {
-    t.is(L.eval('!a', {a: false}), true);
-    t.is(L.eval('!a', {a: true}), false);
+    t.is(logic('!a', {a: false}), true);
+    t.is(logic('!a', {a: true}), false);
 });
 
-test('a && b || c', (t) => {
-    const result = L.eval('a && b || c', {
+test('{a} && {b} || {c}', (t) => {
+    const result = logic('{a} && {b} || {c}', {
         a: true,
         b: false,
         c: false,
@@ -47,8 +47,8 @@ test('a && b || c', (t) => {
     t.is(result, false);
 });
 
-test('a && (b || c)', (t) => {
-    const result = L.eval('a && (b || c)', {
+test('{a} && ({b} || {c})', (t) => {
+    const result = logic('{a} && ({b} || {c})', {
         a: true,
         b: false,
         c: false,
@@ -56,8 +56,8 @@ test('a && (b || c)', (t) => {
     t.is(result, false);
 });
 
-test('a && b || c', (t) => {
-    const result = L.eval('a && b || c', {
+test('{a} && {b} || {c}', (t) => {
+    const result = logic('{a} && {b} || {c}', {
         a: true,
         b: true,
         c: false,
@@ -65,8 +65,8 @@ test('a && b || c', (t) => {
     t.is(result, true);
 });
 
-test('(a && b) || c', (t) => {
-    const result = L.eval('(a && b) || c', {
+test('({a} && {b}) || {c}', (t) => {
+    const result = logic('({a} && {b}) || {c}', {
         a: true,
         b: true,
         c: false,
@@ -74,8 +74,8 @@ test('(a && b) || c', (t) => {
     t.is(result, true);
 });
 
-test('( a && b )||c', (t) => {
-    const result = L.eval('( a && b )||c', {
+test('( {a} && {b} )||{c}', (t) => {
+    const result = logic('( {a} && {b} )||{c}', {
         a: true,
         b: true,
         c: false,
@@ -84,7 +84,7 @@ test('( a && b )||c', (t) => {
 });
 
 test('throw error when no matched variable ', (t) => {
-    const error = t.throws(() => L.eval('!a', {ha: false}));
+    const error = t.throws(() => logic('!{a}', {ha: false}));
     t.is(error instanceof Error, true);
     t.is(error.message, 'No any matched variable for "a"');
 });

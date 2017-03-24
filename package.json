@@ -2,7 +2,7 @@
   "name": "logic-string",
   "version": "0.1.0",
   "description": "Calculate logical expressions in string.",
-  "main": "src/L.js",
+  "main": "src/logic.js",
   "scripts": {
     "lint": "npm-run-all lint-*",
     "lint-src": "eslint --quiet src",
@@ -30,7 +30,9 @@
   "bugs": {
     "url": "https://github.com/adoyle-h/logic-string/issues"
   },
-  "dependencies": {},
+  "dependencies": {
+    "string-template": "^1.0.0"
+  },
   "devDependencies": {
     "ava": "^0.17.0",
     "eslint": "^3.12.2",
